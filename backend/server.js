@@ -13,7 +13,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-
+// ==================== MONGODB CONNECTION ====================
 
 mongoose
   .connect("mongodb://127.0.0.1:27017/hospital_management")
@@ -24,13 +24,13 @@ mongoose
     console.log("MongoDB connection failed:", error.message);
   });
 
-
+// ==================== TEST BACKEND ====================
 
 app.get("/", (req, res) => {
   res.send("Hospital Management Backend is Running");
 });
 
-
+// ==================== LOGIN ====================
 
 app.post("/api/auth/login", (req, res) => {
   const { email, password } = req.body;
@@ -48,7 +48,7 @@ app.post("/api/auth/login", (req, res) => {
   }
 });
 
-
+// ==================== PATIENTS ====================
 
 app.get("/api/patients", async (req, res) => {
   try {
@@ -87,7 +87,7 @@ app.post("/api/patients", async (req, res) => {
   }
 });
 
-
+// ==================== DOCTORS ====================
 
 app.get("/api/doctors", async (req, res) => {
   try {
@@ -125,7 +125,7 @@ app.post("/api/doctors", async (req, res) => {
   }
 });
 
-
+// ==================== APPOINTMENTS ====================
 
 app.get("/api/appointments", async (req, res) => {
   try {
@@ -171,7 +171,7 @@ app.post("/api/appointments", async (req, res) => {
   }
 });
 
-
+// ==================== BEDS ====================
 
 app.get("/api/beds", async (req, res) => {
   try {
@@ -217,9 +217,9 @@ app.post("/api/beds", async (req, res) => {
   }
 });
 
+// ==================== BILLING - MONGODB ====================
 
-
-
+// Get all bills
 app.get("/api/bills", async (req, res) => {
   try {
     const bills = await Bill.find();
@@ -235,7 +235,7 @@ app.get("/api/bills", async (req, res) => {
   }
 });
 
-
+// Add bill
 app.post("/api/bills", async (req, res) => {
   try {
     const {
@@ -266,7 +266,7 @@ app.post("/api/bills", async (req, res) => {
   }
 });
 
-
+// ==================== SERVER ====================
 
 app.listen(5000, () => {
   console.log("Server running on http://localhost:5000");
