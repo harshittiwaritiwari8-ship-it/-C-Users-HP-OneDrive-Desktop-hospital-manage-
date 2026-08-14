@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 import Login from "./login";
 import Dashboard from "./Dashboard";
-import Patients from "./Patients";
+import Patients from "./patients";
 import Doctors from "./Doctors";
 import Appointments from "./Appointments";
 import Beds from "./Beds";
